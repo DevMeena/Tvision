@@ -1,0 +1,8 @@
+infinite re-render when listening to delete function
+
+*double back issue when add to watchlist
+
+relogin to delete account (take modal from classroom proj)
+______________
+refactor code
+add useful comments
