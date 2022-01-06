@@ -21,7 +21,7 @@ const contentCard = ({
 
     return (
         <div>
-            <Link href={"/content/" + media_type + '/' + id} >
+            <Link underline="none" href={"/content/" + media_type + '/' + id} >
             <div className="card-outer">
             <Badge className="badge-part" badgeContent={vote_average} color={ vote_average >= 7 ? 'primary' : vote_average < 4 ? 'error' : 'secondary' } />
                 {media_type !== "tv" ? <MovieIcon className="card-title-tag"/> : <LiveTvIcon className="card-title-tag" />}

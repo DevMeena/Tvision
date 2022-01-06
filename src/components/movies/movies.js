@@ -26,7 +26,13 @@ const Movies = () => {
         const { data } = await aixos.get(Movie_URL); //  + "&with_genres=" + genreforURL
         
         setContent(data.results)
+        // setNumOfPages(data.total_pages)
+
+        if(data.total_pages < 500)
         setNumOfPages(data.total_pages)
+        else
+        setNumOfPages(500)
+
     }
 
     useEffect(() => {
