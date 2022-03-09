@@ -1,14 +1,8 @@
 import React from 'react'
 import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
 import { Picture } from 'react-responsive-picture';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { Button } from '@material-ui/core';
-import DeleteIcon from '@mui/icons-material/Delete';
-import Link from '@mui/material/Link';
-import { collection, setDoc, doc, addDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore"
+import { doc, updateDoc, arrayRemove } from "firebase/firestore"
 import { db } from '../../firebase'
 import { useAuth } from '../../contexts/AuthContext';
 import { useHistory } from 'react-router';
@@ -58,5 +52,3 @@ const ListContent = (media) => {
 }
 
 export default ListContent
-
-/* <Grid item className="table-movie-srno" lg={1} md={1} sm={12} xs={12}> <p>1.</p> </Grid> */

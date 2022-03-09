@@ -2,8 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-// import { img_300, noPicture } from "../../config/config";
-// import "./Carousel.css";
 
 const img_300 = "https://image.tmdb.org/t/p/w300";
 const noPicture = "https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg";

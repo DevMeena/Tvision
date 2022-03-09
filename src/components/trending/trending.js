@@ -1,13 +1,7 @@
 import ContentCard from "../card/contentCard"
 import axios from "axios"
 import { useEffect, useState } from 'react'
-import { ContentPaste, LocalFireDepartment } from "@mui/icons-material";
-import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import CustomPagination from "../pagination/CustomPagination";
-import Pagination from "@material-ui/lab/Pagination";
-import ContentPage from '../content/contentPage'
-import { SearchContext } from "../../contexts/searchContext";
-import { useContext } from 'react';
 
 const Trending = () => {
     const [page,setPage] = useState(1)
@@ -28,12 +22,8 @@ const Trending = () => {
 
     console.log(content);
 
-    const { search } = useContext(SearchContext);
-    console.log("hello");
-
     return (
         <div>
-            {/* <span> <LocalFireDepartmentIcon color='warning' fontSize='inherit'/> </span> */}
             <h1 className="trending-text">  Trending Now </h1>
             <div className="trending">
 

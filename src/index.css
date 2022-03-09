@@ -639,3 +639,13 @@
 .tabular-spacing {
   height: 10px;
 }
+
+.error-division {
+  text-align: center;
+  border: solid 5px #333333;
+  border-radius: 5px;
+}
+
+.error-text {
+  font-size: 2.5rem;
+}

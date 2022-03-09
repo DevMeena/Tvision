@@ -12,12 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import { Alert } from "react-bootstrap"
-// import Alert from 'react-bootstrap/Alert'
 import Alert from '@mui/material/Alert';
 
 import { useAuth } from '../contexts/AuthContext'
-// not using refs
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -35,11 +33,6 @@ const theme = createTheme();
 
 export default function SignUp() {
 
-    // const firstNameRef = useRef()
-    // const lastNameRef = useRef()
-    // const emailRef = useRef()
-    // const passwordRef = useRef()
-
     const [userData, setUserData] = useState({
       email: '',
       password: ''
@@ -56,6 +49,16 @@ export default function SignUp() {
     try {
       setError('')
       setLoading(true)
+      console.log(userData.password.length)
+
+      const err = {
+        message: "password length should be 6 to 12 characters long"
+      }
+
+      if(userData.password.length > 12) throw err;
+
+      console.log(userData.password);
+
       await signUp(userData.email, userData.password)
       
       history.push("/trending")
@@ -96,7 +99,6 @@ export default function SignUp() {
                   fullWidth
                   id="email"
                   label="Email Address"
-                  // ref={emailRef}
                   name="email"
                   autoComplete="email"
                   value={userData.email}
@@ -111,18 +113,11 @@ export default function SignUp() {
                   label="Password"
                   type="password"
                   id="password"
-                  // ref={passwordRef}
                   autoComplete="new-password"
                   value={userData.password}
                   onChange={(e) => setUserData({ ...userData, password: e.target.value })}
                 />
               </Grid>
-              {/* <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid> */}
             </Grid>
             <Button
               disabled={loading}

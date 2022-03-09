@@ -12,12 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import { Alert } from "react-bootstrap"
-// import Alert from 'react-bootstrap/Alert'
 import Alert from '@mui/material/Alert';
 
 import { useAuth } from '../contexts/AuthContext'
-// not using refs
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -40,15 +38,10 @@ export default function ChangePassword() {
       password: ''
     })
 
-    const { currentUser, updatePassword } = useAuth()
+    const { updatePassword } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const [message, setMessage] = useState("")
     const history = useHistory()
-
-    // console.log();
-
-
 
     const handleSubmit = (event) => {
 
@@ -91,7 +84,6 @@ export default function ChangePassword() {
             <Grid container spacing={2}>
 
               {error && <Grid item xs={12}> <Alert severity="error"> {error} </Alert> </Grid>}
-              {message && <Grid item xs={12}> <Alert severity="success">{message}</Alert></Grid>}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -100,7 +92,6 @@ export default function ChangePassword() {
                   label="Password"
                   type="password"
                   id="password"
-                  // ref={passwordRef}
                   autoComplete="new-password"
                   value={userData.password}
                   onChange={(e) => setUserData({ ...userData, password: e.target.value })}
@@ -127,13 +118,6 @@ export default function ChangePassword() {
             >
               Cancel
             </Button>
-            {/* <Grid container justifyContent="center">
-              <Grid item>
-                <Link href="/signin" variant="body2">
-                   Sign in
-                </Link>
-              </Grid>
-            </Grid> */}
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />

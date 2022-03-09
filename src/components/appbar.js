@@ -7,29 +7,22 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import MovieIcon from '@mui/icons-material/Movie';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
-import TvIcon from '@mui/icons-material/Tv';
 import LocalMoviesOutlinedIcon from '@mui/icons-material/LocalMoviesOutlined';
 import Stack from '@mui/material/Stack';
 import Link from '@mui/material/Link';
-import { useSearch } from '../contexts/searchContext';
 import { SearchContext } from '../contexts/searchContext';
 import { useHistory } from "react-router-dom"
-import { createBrowserHistory } from 'history';
 import { useAuth } from '../contexts/AuthContext'
-import { collection, setDoc, doc, addDoc, getDocs, getDoc, deleteDoc } from "firebase/firestore"
-import { db, firebase } from '../firebase'
+import { doc, deleteDoc } from "firebase/firestore"
+import { db } from '../firebase'
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -62,7 +55,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -74,7 +66,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function PrimarySearchAppBar() {    
   
-  const [error, setError] = useState('')
   const { currentUser, logOut, deleteUser } = useAuth()
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -100,34 +91,17 @@ export default function PrimarySearchAppBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-
-
-  // const [searchText, setSearchText] = useState("");
-  // const {search, setSearch} = useContext(SearchContext);
-  // console.log("hello"+search);
-  // const { search } = useSearch()
-
   const { search, setSearch } = useContext(SearchContext);
 
-  // function _handleKeyDown(e) {
-  //   if (e.key === 'Enter') {
-  //     console.log('do validate');
-  //   }
-  // }
-
   const history = useHistory()
-  // const history = createBrowserHistory({forceRefresh: true})
-  // const history = useHistory();
 
   const handleLogOut = async () => {
-    // handleMenuClose
-    setError('')
-
     try {
       await logOut()
+      console.log('Successfully logged out')
       history.push('/')
     } catch {
-      setError('Failed to log out')
+      console.log('Failed to log out')
     }
   }
 
@@ -160,7 +134,6 @@ export default function PrimarySearchAppBar() {
   const handleDeleteAccount = async () => {
     if(window.confirm("Are you sure you want to delete your account?")) {
       console.log(currentUser.uid);
-      // ! delete account code
       await deleteDoc(doc(db, "users", currentUser.uid)).then(async () => {
         await deleteUser(currentUser).then(()=>{
           history.push('/')
@@ -259,7 +232,6 @@ export default function PrimarySearchAppBar() {
         <Toolbar sx={{ justifyContent: "space-between" }} >
 
           <Stack direction="row" className="brand-item" style={{'cursor': 'pointer'}} alignItems="center" onClick={()=> window.scroll(0,0)} >
-          {/* <Link href="/trending" color="inherit" underline="none" > */}
               
           <LocalMoviesOutlinedIcon sx={{ display: { xs: 'block', sm: 'block' }, mr: 0.7 }} />
 
@@ -271,25 +243,19 @@ export default function PrimarySearchAppBar() {
           >
             Tvision
           </Typography>
-
-          {/* </Link> */}
           </Stack>
           <div className="seach-box-area">
-          {/* <form > */}
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase className="seach-box-searcher"
               placeholder="Search…"
-              // value="hola"
               onKeyPress={(e) => e.key === 'Enter' && searchQuery(e)}
               inputProps={{ 'aria-label': 'search' }}
-              // value={searchText}
               onChange={(e) => setSearch(e.target.value)}
             />
           </Search>
-          {/* </form> */}
           </div>
 
           <Box sx={{ flexGrow: 1 }} />

@@ -3,13 +3,10 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
-import { Picture } from 'react-responsive-picture';
 import { provider } from './googleProvider';
 import { useAuth } from '../contexts/AuthContext'
 import GoogleButton from 'react-google-button'
 import LocalMoviesOutlinedIcon from '@mui/icons-material/LocalMoviesOutlined';
-import Typography from '@mui/material/Typography';
 import { useHistory } from "react-router-dom"
 
 

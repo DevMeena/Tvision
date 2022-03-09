@@ -13,8 +13,6 @@ export const AuthProvider = ({children}) => {
     const[currentUser, setCurrentUser] = useState()
     const[loading, setLoading] = useState(true)
 
-    const usersCollectionRef = collection(db, "users")
-
     function signUp(email, password) {
         return auth.createUserWithEmailAndPassword(email, password).then(
             async function createUserDb(userCredentials) {
@@ -27,7 +25,7 @@ export const AuthProvider = ({children}) => {
         return auth.signInWithEmailAndPassword(email, password)
     }
 
-    function logOut(email, password) {
+    function logOut() {
         return auth.signOut()
     }
 
@@ -80,12 +78,3 @@ export const AuthProvider = ({children}) => {
         </AuthContext.Provider>
     )
 }
-
-
-            // .then((res) => {
-            //     return res.user;
-                
-            // })
-            // .catch((er) => {
-            //     return er;
-            // })
