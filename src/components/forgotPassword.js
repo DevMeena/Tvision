@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useHistory } from "react-router-dom"
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,12 +11,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import { Alert } from "react-bootstrap"
-// import Alert from 'react-bootstrap/Alert'
 import Alert from '@mui/material/Alert';
-
 import { useAuth } from '../contexts/AuthContext'
-// not using refs
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -44,9 +40,6 @@ export default function ForgotPassword() {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState("")
-    const history = useHistory()
-
-    // console.log();
 
     const handleSubmit = async (event) => {
     event.preventDefault();
