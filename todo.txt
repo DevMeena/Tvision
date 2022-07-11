@@ -1,11 +1,2 @@
-infinite re-render when listening to delete function
-blue underline link for cards
-*double back issue when add to watchlist
-remove home page effect for mobile devices
-relogin to delete account (take modal from classroom proj)
-auto close navbar items after click
-add links to footer
-youtube fullscreen
-______________
 refactor code
 add useful comments
