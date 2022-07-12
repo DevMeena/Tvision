@@ -30,11 +30,11 @@ const ListContent = (media) => {
 
   const handleRemovefromWatchlist = async (e) => {
     e.preventDefault();
-    media.onChange(e.target.value);
     console.log(currentUser.uid);
     await updateDoc(doc(db, 'users', currentUser.uid), {
       myList: arrayRemove(delObj),
     });
+    media.onChange(e.target.value);
   };
 
   return (
